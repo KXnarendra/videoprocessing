@@ -1,0 +1,40 @@
+version: '3.2'
+services:
+  rabbit_mq:
+    image: 'rabbitmq:3.8-rc-management'
+    container_name: rabbit_mq
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    volumes:
+      - 'rabbit_mqdata:/usr/share/rabbitmq/data'
+  localstack:
+    image: localstack/localstack
+    ports:
+      - '127.0.0.1:4510-4559:4510-4559'
+      - '127.0.0.1:4566:4566'
+    environment:
+      - AWS_DEFAULT_REGION=us-west-2
+      - DYNAMODB_SHARE_DB=1
+      - 'SERVICES=${SERVICES-}'
+      - 'DEBUG=${DEBUG-}'
+      - 'DATA_DIR=${DATA_DIR-}'
+      - 'LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR-}'
+      - 'LOCALSTACK_API_KEY=${LOCALSTACK_API_KEY-}'
+      - 'HOST_TMP_FOLDER=${TMPDIR:-/tmp/}localstack'
+      - 'DOCKER_HOST=unix:///var/run/docker.sock'
+    volumes:
+      - '${TMPDIR:-/tmp}/localstack:/tmp/localstack'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+  consumer1:
+    build: .
+    depends_on:
+      - rabbit_mq
+      - localstack
+    environment:
+      AMQP_URL: 'amqp://rabbit_mq?connection_attempts=10&retry_delay=10'
+    volumes:
+      - './consumer:/dvr'
+volumes:
+  rabbit_mqdata:
+    driver: local

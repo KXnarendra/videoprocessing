@@ -1,0 +1,11 @@
+ [
+        {
+            "customer_ID": 1,
+            "vehicle_no": "KA51xxxx",
+            "vehicle_info": {
+                "start_time": "2021-10-04",
+                "end_time": "2021-10-08",
+                "Cam_lag": 0
+            }
+        }
+    ]
