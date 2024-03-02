@@ -1,0 +1,35 @@
+{
+    "trips": [
+        {
+            {
+                "externalAlertId": "xxxxxxx",
+                "location": {
+                    "latitude": 11.263831666666666,
+                    "longitude": 75.77736
+                },
+                "timestamp": 144562096442,
+                "timestampInISO": "2023-02-09T04:34:56.442Z",
+                "startTimeInISO": "2023-02-09T04:34:56.442Z",
+                "endTimeInISO": "2023-02-09T04:34:56.946Z",
+                "alertType": "xxxx",
+                "duration": 504,
+                "speed": 30
+            },
+            {
+                "externalAlertId": "xxxxxxx",
+                "location": {
+                    "latitude": 11.263831666666666,
+                    "longitude": 75.77736
+                },
+                "timestamp": 144562096442,
+                "timestampInISO": "2023-02-09T04:34:56.442Z",
+                "startTimeInISO": "2023-02-09T04:34:56.442Z",
+                "endTimeInISO": "2023-02-09T04:34:56.946Z",
+                "alertType": "xxxx",
+                "duration": 504,
+                "speed": 30
+            }
+        ],
+        "executed": 1
+    }]
+}
